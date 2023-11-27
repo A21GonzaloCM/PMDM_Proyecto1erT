@@ -1,0 +1,24 @@
+package com.example.uf1_proyecto_compose.Data
+
+import kotlinx.coroutines.flow.Flow
+
+class TaskRepositoryImplementation(
+    private val dao:TaskDAO
+): TaskRepository {
+
+    override suspend fun insertTask(task: Task) {
+        dao.insertTask(task)
+    }
+
+    override suspend fun deleteTask(task: Task) {
+        dao.deleteTask(task)
+    }
+
+    override suspend fun getTaskById(id: Int): Task? {
+        return dao.getTaskById(id)
+    }
+
+    override fun getTasks(): Flow<List<Task>> {
+        return dao.getTasks()
+    }
+}
