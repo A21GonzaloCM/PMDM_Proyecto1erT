@@ -1,8 +1,10 @@
-package com.example.uf1_proyecto_compose.DependencyInjection
+package com.example.uf1_proyecto_compose.dependencyInjection
 
 import android.app.Application
 import androidx.room.Room
-import com.example.uf1_proyecto_compose.Data.TasksAppDB
+import com.example.uf1_proyecto_compose.data.TaskRepository
+import com.example.uf1_proyecto_compose.data.TaskRepositoryImplementation
+import com.example.uf1_proyecto_compose.data.TasksAppDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,6 +23,12 @@ object AppModule {
             TasksAppDB::class.java,
             "tasks_db"
         ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideTaskRepository(db: TasksAppDB): TaskRepository{
+       return TaskRepositoryImplementation(db.dao)
     }
 
 }

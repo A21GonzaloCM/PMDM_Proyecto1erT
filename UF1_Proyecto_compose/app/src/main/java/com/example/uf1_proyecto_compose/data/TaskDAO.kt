@@ -1,4 +1,4 @@
-package com.example.uf1_proyecto_compose.Data
+package com.example.uf1_proyecto_compose.data
 
 import androidx.room.Dao
 import androidx.room.Delete
