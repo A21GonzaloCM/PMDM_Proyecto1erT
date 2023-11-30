@@ -2,9 +2,10 @@ import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 
 plugins {
     kotlin("kapt")
+    id("com.google.dagger.hilt.android")
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.dagger.hilt.android")
+
 
 }
 
@@ -53,14 +54,20 @@ android {
         }
     }
 }
-    kapt {
-        correctErrorTypes = true
-    }
+kapt {
+    correctErrorTypes = true
+}
 
 
 dependencies {
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation ("com.google.dagger:hilt-android:2.42")
+    kapt ("com.google.dagger:hilt-android-compiler:2.42")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin-api:1.5.31")
+    implementation("com.android.tools.build:gradle:7.0.4")
+    implementation("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.7.0")
@@ -68,7 +75,8 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material:1.5.4")
+
     implementation("androidx.room:room-common:2.6.0")
     implementation("androidx.room:room-ktx:2.6.0")
     testImplementation("junit:junit:4.13.2")

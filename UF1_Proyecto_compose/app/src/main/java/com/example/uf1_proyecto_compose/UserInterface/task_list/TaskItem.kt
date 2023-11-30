@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -55,8 +57,15 @@ fun TaskItem(
 
 
             }
-
+            task.description?.let {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(text = it)
+            }
         }
+
+        Checkbox(checked = task.isDone, onCheckedChange = { isChecked ->
+            onEvent(TaskListEvent.OnDoneChange(task, isChecked))
+        })
     }
 }
 
