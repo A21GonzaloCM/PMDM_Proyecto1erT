@@ -67,7 +67,8 @@ fun TaskListScreen(
                     modifier= Modifier.fillMaxWidth().clickable {
                         viewModel.onEvent(TaskListEvent.OnTaskClick(task))
                     }
-                        .padding(15.dp)
+                        .padding(15.dp
+                        )
                 )
             }
         }
