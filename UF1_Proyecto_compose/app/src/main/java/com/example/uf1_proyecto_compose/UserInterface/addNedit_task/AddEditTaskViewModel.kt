@@ -7,7 +7,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.android.tools.build.libraries.metadata.Repository
 import com.example.uf1_proyecto_compose.data.Task
 import com.example.uf1_proyecto_compose.data.TaskRepository
 import com.example.uf1_proyecto_compose.util.UiEvent
@@ -61,7 +60,7 @@ class AddEditTaskViewModel @Inject constructor(
             }
             is AddEditTaskEvent.OnSaveTaskClick->{
                 viewModelScope.launch {
-                    if(title.toString().isNotBlank()){
+                    if(title.toString().isBlank()){
                         sendUiEvent(UiEvent.ShowSnackbar(
                             message = "The title can't be empty"
                         ))
@@ -74,7 +73,7 @@ class AddEditTaskViewModel @Inject constructor(
                             isDone = task?.isDone ?: false
                         )
                     )
-                    sendUiEvent(UiEvent.PopBackStak)
+                    sendUiEvent(UiEvent.PopBackStack)
                 }
             }
         }
