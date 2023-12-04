@@ -7,12 +7,13 @@ import com.example.uf1_proyecto_compose.data.TaskRepository
 import com.example.uf1_proyecto_compose.util.Routes
 import com.example.uf1_proyecto_compose.util.UiEvent
 import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltAndroidApp
+@HiltViewModel
 class TaskListViewModel @Inject constructor(
     private val repository: TaskRepository
 ) : ViewModel() {
