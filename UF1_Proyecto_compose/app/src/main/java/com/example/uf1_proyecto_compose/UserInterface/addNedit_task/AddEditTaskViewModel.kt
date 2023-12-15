@@ -29,6 +29,7 @@ class AddEditTaskViewModel @Inject constructor(
         private set
 
     var description = mutableStateOf("")
+
         private set
 
     private val _uiEvent = Channel<UiEvent>()
@@ -40,8 +41,8 @@ class AddEditTaskViewModel @Inject constructor(
             viewModelScope.launch {
                 if (taskId != null) {
                     repository.getTaskById(taskId)?.let{ task ->
-                        title = task.title as MutableState<String>
-                        description= (task.description ?: "") as MutableState<String>
+                        title.value = task.title
+                        description.value= (task.description ?: "")
                         this@AddEditTaskViewModel.task = task
                     }
                 }
@@ -53,10 +54,11 @@ class AddEditTaskViewModel @Inject constructor(
     fun onEvent(event: AddEditTaskEvent){
         when(event){
             is AddEditTaskEvent.OnTitleChange->{
-                title = event.title as MutableState<String>
+                title.value = event.title
+
             }
             is AddEditTaskEvent.OnDescriptionChange->{
-                description= event.description as MutableState<String>
+                description.value= event.description
             }
             is AddEditTaskEvent.OnSaveTaskClick->{
                 viewModelScope.launch {
@@ -68,8 +70,8 @@ class AddEditTaskViewModel @Inject constructor(
                     }
                     repository.insertTask(
                         Task(
-                            title= title.toString(),
-                            description= description.toString(),
+                            title= title.value,
+                            description= description.value,
                             isDone = task?.isDone ?: false
                         )
                     )

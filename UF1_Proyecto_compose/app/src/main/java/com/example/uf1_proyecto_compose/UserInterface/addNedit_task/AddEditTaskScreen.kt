@@ -69,7 +69,7 @@ fun AddEditTaskScreen(
             modifier = Modifier.fillMaxSize()
         ) {
             TextField(
-                value = viewModel.title.toString(),
+                value = viewModel.title.value,
                 onValueChange = {
                     viewModel.onEvent(AddEditTaskEvent.OnTitleChange(it))
                 },
@@ -86,7 +86,7 @@ fun AddEditTaskScreen(
             )
             Spacer(modifier = Modifier.height(8.dp))
             TextField(
-                value = viewModel.description.toString(),
+                value = viewModel.description.value,
                 onValueChange = {
                     viewModel.onEvent(AddEditTaskEvent.OnDescriptionChange(it))
                 },
