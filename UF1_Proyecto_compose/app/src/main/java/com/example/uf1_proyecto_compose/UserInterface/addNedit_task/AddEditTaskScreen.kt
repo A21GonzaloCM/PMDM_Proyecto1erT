@@ -21,6 +21,8 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 
@@ -33,6 +35,7 @@ fun AddEditTaskScreen(
     onPopBackStack: () -> Unit,
      viewModel: AddEditTaskViewModel = hiltViewModel()
 ) {
+
     val scaffoldState = rememberScaffoldState()
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
@@ -78,6 +81,8 @@ fun AddEditTaskScreen(
                 },
                 label = { Text("Introduce a title: ") },
                 keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Done
 
                 ),
                 placeholder= {
