@@ -10,8 +10,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.SnackbarResult
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.rememberScaffoldState
@@ -53,6 +56,7 @@ fun TaskListScreen(
     }
     Scaffold(
         scaffoldState = scaffoldState,
+        topBar = { TopAppBar(title = { Text("Tasks App") },backgroundColor = MaterialTheme.colors.primary)  },
         floatingActionButton = {
             FloatingActionButton(onClick = { viewModel.onEvent(TaskListEvent.OnAddTaskClick) }) {
                 Icon(imageVector = Icons.Default.AddCircle, contentDescription = "Add")

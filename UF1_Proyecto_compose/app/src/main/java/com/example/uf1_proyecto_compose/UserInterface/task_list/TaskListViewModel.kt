@@ -27,7 +27,7 @@ class TaskListViewModel @Inject constructor(
     fun onEvent(event: TaskListEvent) {
         when (event) {
             is TaskListEvent.OnTaskClick -> {
-                sendUiEvent(UiEvent.Navigate(Routes.ADD_EDIT_TASK + "?taskId${event.task.id}"))
+                sendUiEvent(UiEvent.Navigate(Routes.ADD_EDIT_TASK + "?taskId=${event.task.id}"))
             }
 
             is TaskListEvent.OnAddTaskClick -> {

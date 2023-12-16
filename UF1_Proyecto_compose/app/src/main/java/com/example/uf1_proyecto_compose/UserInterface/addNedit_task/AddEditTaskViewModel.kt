@@ -62,7 +62,7 @@ class AddEditTaskViewModel @Inject constructor(
             }
             is AddEditTaskEvent.OnSaveTaskClick->{
                 viewModelScope.launch {
-                    if(title.toString().isBlank()){
+                    if(title.value.isBlank()){
                         sendUiEvent(UiEvent.ShowSnackbar(
                             message = "The title can't be empty"
                         ))
@@ -72,7 +72,8 @@ class AddEditTaskViewModel @Inject constructor(
                         Task(
                             title= title.value,
                             description= description.value,
-                            isDone = task?.isDone ?: false
+                            isDone = task?.isDone ?: false,
+                            id= task?.id ?:0
                         )
                     )
                     sendUiEvent(UiEvent.PopBackStack)
